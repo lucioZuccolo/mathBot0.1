@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<head>
+  <title>MathBot Beta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="upload.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+
+  <!-- brython scripts-->
+  <script type="text/javascript" src="brython.js">
+  </script>
+  <script type="text/javascript" src="brython_stdlib.js">
+  </script>
+  <script type="text/javascript" src="MathBot1.brython.js">
+  </script>
+
+  <!-- js xlsx script -->
+  <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
+
+  <style>
+    body {
+      background: #e6e6e6;
+    }
+  </style>
+
+</head>
+
+<body onload="brython()">
+  <!--Navbar -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand">MathBot Beta 0.1</a>
+      <form class="form-inline">
+        <div class="nav-item dropdown show">
+          <a class="nav-link dropdown-toggle " href="#" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#" id="logout">Log out</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <!--/.Navbar -->
+
+  <div class="container drop-zone px-4 py-5 mt-5">
+    <span class="drop-zone__prompt">Drop file here or click to upload</span>
+    <input type="file" id= "input" name="myFile" class="drop-zone__input">
+  </div>
+  <div class="container my-5 text-center mb-4"> Or</div>
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <a class="btn btn-success mb-4" target="_blank"
+        href="https://docs.google.com/spreadsheets/d/15BAZ5nBupYJdjwpBNnd5OvgR4xno0pEkQrsGhTvCPOw/edit#gid=0"
+        role="button">Click to see the source sheet</a>
+      <p>UPLOAD YOUR WEEK RESULTS HERE</p>
+    </div>
+
+    <!-- Table -->
+    <table class="table table-striped my-5">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>New Balance</th>
+        </tr>
+      </thead>
+      <tbody id="demo"></tbody>
+    </table>
+
+    <form>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Insert this week fees: </label>
+        <input type="number" class="form-control" id="fee" placeholder="Enter amount...">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Amount paid early this week to Ryan:</label>
+        <input type="number" class="form-control" id="ryan" placeholder="Enter amount...">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Amount paid early this week to Zane:</label>
+        <input type="number" class="form-control" id="zane" placeholder="Enter amount...">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Amount paid early this week to Austin:</label>
+        <input type="number" class="form-control" id="austin" placeholder="Enter amount...">
+      </div>
+    </form>
+
+    <div class="container my-5 text-center mb-4">
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-primary" id="calc">Calculate with uploaded file</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-success" id="hola1">Calculate with online sheeet</a>
+        </div>
+      </div>
+
+      <textarea class="form-control mt-5" id="textarea1" rows="3"></textarea>
+         
+      <img id='pc' src="imgs\hola.png" class="img-fluid mt-5" alt="Responsive image">
+
+
+      <script src="upload.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+        <!-- firebase scripts-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyCis1HsZLVWRATo3bBDApgctASCvQpzZM0",
+                authDomain: "luciobot-9138b.firebaseapp.com",
+                databaseURL: "https://luciobot-9138b-default-rtdb.firebaseio.com",
+                projectId: "luciobot-9138b",
+                storageBucket: "luciobot-9138b.appspot.com",
+                messagingSenderId: "1063456209794",
+                appId: "1:1063456209794:web:2e5129d3d553e49a06ad9b",
+                measurementId: "G-YK6JP0S5EB"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            firebase.analytics();
+        </script>
+
+
+        <script type="text/javascript">
+
+          var getByID = (id) => document.getElementById(id);
+          var clearInput = (ip) => ip.value = '';
+          clearFields = () => {
+            clearInput(getByID('keywordIn'));
+            clearInput(getByID('cipherIn'));
+            clearInput(getByID('decipherIn'));
+            clearInput(getByID('secretIn'));
+            clearInput(getByID('messageIn'));
+          };
+          
+          </script>
+
+      <!-- python file-->
+      <script type="text/python">
+      # 1) Basic DOM manipulation :: turn on computer
+
+      from browser import document
+
+      def turnOnComputer(event):
+        document["pc"].src = "imgs\index.png"
+
+      document["hola1"].bind("click", turnOnComputer)
+
+      </script>
+
+
+</body>

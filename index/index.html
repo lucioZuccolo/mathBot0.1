@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: "Roboto Condensed", sans-serif;
+            background-color: #e6e6e6;
+        }
+    </style>
+    <title>MathBot</title>
+</head>
+
+<body>
+<!--Navbar -->
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand">MathBot Beta 0.11</a>
+      <form class="form-inline">
+        <div class="dropdown show">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Log out</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    </nav>
+    <!--/.Navbar -->
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter align-items-center">
+            <div class="col">
+                <div class="container shadow rounded px-4 py-5 mt-5 bg-white" style="max-width: 420px">
+                    <h1 class="text-center mb-4">Sign In</h1>
+                    <form id="signin-form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="text" id="signin-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" id="signin-password" class="form-control" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-75 btn-block mx-auto mt-4">
+                            Sign in
+                        </button>
+                        <p class="error text-danger center-align mt-3"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- firebase scripts-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyCis1HsZLVWRATo3bBDApgctASCvQpzZM0",
+                authDomain: "luciobot-9138b.firebaseapp.com",
+                databaseURL: "https://luciobot-9138b-default-rtdb.firebaseio.com",
+                projectId: "luciobot-9138b",
+                storageBucket: "luciobot-9138b.appspot.com",
+                messagingSenderId: "1063456209794",
+                appId: "1:1063456209794:web:2e5129d3d553e49a06ad9b",
+                measurementId: "G-YK6JP0S5EB"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            firebase.analytics();
+        </script>
+
+        <!-- my scripts -->
+        <script src="main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+Google chrome open developer tools: Ctrl + Shift + i
+
+Launch web server: 
+python -m http.server 8001
+or
+py -m http.server 8001
+
+exit web server: Ctrl + c
+
+
+access: localhost:8001/index.html

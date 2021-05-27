@@ -1,0 +1,15 @@
+.drop-zone{
+    max-width: 500px;
+    height: 200px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Quicksand", sans-serif;
+    font-size: 500;
+    font-size: 20px;
+    cursor: pointer;
+    color: beige;
+    border: 4px dashed black;
+    border-radius: 10px;
+}
